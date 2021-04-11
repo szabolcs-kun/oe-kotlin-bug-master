@@ -4,15 +4,14 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.skun.bugmaster.views.DangerLevelView
 
 class InsectAdapter(
-    private val insectList: List<InsectItem>,
-    private val listener: OnItemClickListener
+    private val insectList: List<Insect>
 ) :
     RecyclerView.Adapter<InsectAdapter.InsectViewHolder>() {
 
@@ -31,6 +30,16 @@ class InsectAdapter(
         holder.customView.setDangerLevel(currentItem.dangerLevel)
         holder.textView1.text = currentItem.insectName
         holder.textView2.text = currentItem.insectScientificName
+
+        holder.itemView.setOnClickListener { view ->
+            /*val intent = Intent(view.context, DetailsActivity::class.java)
+            intent.putExtra(
+                Intent.EXTRA_TEXT,
+                currentItem.id.toString()
+            )
+            ContextCompat.startActivity(view.context, intent, null)*/
+            Toast.makeText(view.context, "Item ${currentItem.insectName} clicked", Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun getItemCount() = insectList.size
@@ -45,25 +54,6 @@ class InsectAdapter(
         }
 
         override fun onClick(v: View?) {
-
-            /*
-            val intent = Intent(v!!.context, DetailsActivity::class.java)
-            intent.putExtra(
-                Intent.EXTRA_TEXT,
-                movie.id.toString()
-            )
-            ContextCompat.startActivity(view.context, intent, null)
-            */
-
-
-            val position = adapterPosition
-            if (position != RecyclerView.NO_POSITION) {
-                listener.onItemClick(position)
-            }
         }
-    }
-
-    interface OnItemClickListener {
-        fun onItemClick(position: Int)
     }
 }

@@ -1,20 +1,22 @@
 package com.skun.bugmaster
 
+import android.graphics.drawable.Drawable
+import android.os.AsyncTask
 import android.os.Bundle
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.ImageView
 import android.widget.Toast
+import androidx.core.net.toUri
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import java.util.*
 
-class MainActivity : AppCompatActivity(), InsectAdapter.OnItemClickListener {
+class MainActivity : AppCompatActivity() {
     private var recyclerView: RecyclerView? = null
-    private val insectsList = generateDummyList(500)
-    private val adapter = InsectAdapter(insectsList, this)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -22,10 +24,8 @@ class MainActivity : AppCompatActivity(), InsectAdapter.OnItemClickListener {
 
 
 
-        recyclerView = findViewById<View>(R.id.recycler_view) as RecyclerView
-        recyclerView!!.adapter = adapter
-        recyclerView!!.layoutManager = LinearLayoutManager(this)
-        recyclerView!!.setHasFixedSize(true)
+
+        LoadInsectsTask().execute()
 
         /*
         findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->
@@ -35,19 +35,15 @@ class MainActivity : AppCompatActivity(), InsectAdapter.OnItemClickListener {
         */
     }
 
-    override fun onItemClick(position: Int) {
-        val tmp = insectsList[position]
-        Toast.makeText(this, "Clicked: ${tmp.insectName}", Toast.LENGTH_SHORT).show()
-    }
 
-    private fun generateDummyList(size: Int): List<InsectItem> {
-        val list = ArrayList<InsectItem>()
+    /*private fun generateDummyList(size: Int): List<Insect> {
+        val list = ArrayList<Insect>()
         for (i in 0 until size) {
-            val item = InsectItem((1..10).random(), "Item $i", "Line 2")
+            val item = Insect(null, (1..10).random(), "Item $i", "Line 2")
             list += item
         }
         return list
-    }
+    }*/
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -62,6 +58,30 @@ class MainActivity : AppCompatActivity(), InsectAdapter.OnItemClickListener {
         return when (item.itemId) {
             R.id.action_settings -> true
             else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+
+    /**
+     * Load insects from database
+     */
+    inner class LoadInsectsTask : AsyncTask<Int?, Void?, List<Insect>?>() {
+
+        override fun doInBackground(vararg id: Int?): List<Insect>? {
+            val dataSource = InsectDatabase.getInstance(application).insectDao
+
+            return dataSource.get()
+        }
+
+        //@Override
+        override fun onPostExecute(insects: List<Insect>?) {
+            if (insects == null) return
+            val adapter = InsectAdapter(insects)
+
+            recyclerView = findViewById<View>(R.id.recycler_view) as RecyclerView
+            recyclerView!!.adapter = adapter
+            recyclerView!!.layoutManager = LinearLayoutManager(this@MainActivity)
+            recyclerView!!.setHasFixedSize(true)
         }
     }
 }
