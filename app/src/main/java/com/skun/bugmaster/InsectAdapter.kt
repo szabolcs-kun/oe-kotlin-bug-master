@@ -43,17 +43,12 @@ class InsectAdapter(
     }
 
     override fun getItemCount() = insectList.size
-    inner class InsectViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
-        View.OnClickListener {
+
+    class InsectViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    {
         val customView: DangerLevelView = itemView.findViewById(R.id.dangerLevelView)
         val textView1: TextView = itemView.findViewById(R.id.name)
         val textView2: TextView = itemView.findViewById(R.id.scientific_name)
 
-        init {
-            itemView.setOnClickListener(this)
-        }
-
-        override fun onClick(v: View?) {
-        }
     }
 }

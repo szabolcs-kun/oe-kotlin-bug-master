@@ -19,6 +19,7 @@ abstract class InsectDatabase : RoomDatabase() {
 
     companion object {
         val TAG: String? = this::class.simpleName
+        val executorService = Executors.newSingleThreadScheduledExecutor()
         @Volatile
         private var INSTANCE: InsectDatabase? = null
 
@@ -93,7 +94,9 @@ abstract class InsectDatabase : RoomDatabase() {
             val jsonObject = JSONObject(rawJson)
             val jsonArray = jsonObject.getJSONArray("insects")
 
-            Executors.newSingleThreadScheduledExecutor()
+
+            //Executors.newSingleThreadScheduledExecutor()
+            executorService
                 .execute(Runnable {
                     val dao = getInstance(context).insectDao
 

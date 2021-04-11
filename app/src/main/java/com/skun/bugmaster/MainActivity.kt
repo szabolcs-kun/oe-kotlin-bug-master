@@ -35,16 +35,6 @@ class MainActivity : AppCompatActivity() {
         */
     }
 
-
-    /*private fun generateDummyList(size: Int): List<Insect> {
-        val list = ArrayList<Insect>()
-        for (i in 0 until size) {
-            val item = Insect(null, (1..10).random(), "Item $i", "Line 2")
-            list += item
-        }
-        return list
-    }*/
-
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
@@ -61,10 +51,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
-    /**
-     * Load insects from database
-     */
     inner class LoadInsectsTask : AsyncTask<Int?, Void?, List<Insect>?>() {
 
         override fun doInBackground(vararg id: Int?): List<Insect>? {
