@@ -6,18 +6,47 @@ import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
-class MainActivity : AppCompatActivity() {
-
+class MainActivity : AppCompatActivity(), InsectAdapter.OnItemClickListener {
+    private var recyclerView: RecyclerView? = null
+    private val insectsList = generateDummyList(500)
+    private val adapter = InsectAdapter(insectsList, this)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar))
 
+
+
+        recyclerView = findViewById<View>(R.id.recycler_view) as RecyclerView
+        recyclerView!!.adapter = adapter
+        recyclerView!!.layoutManager = LinearLayoutManager(this)
+        recyclerView!!.setHasFixedSize(true)
+
+        /*
         findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
         }
+        */
+    }
+
+    override fun onItemClick(position: Int) {
+        val tmp = insectsList[position]
+        Toast.makeText(this, "Clicked: ${tmp.insectName}", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun generateDummyList(size: Int): List<InsectItem> {
+        val list = ArrayList<InsectItem>()
+        for (i in 0 until size) {
+            val item = InsectItem((1..10).random(), "Item $i", "Line 2")
+            list += item
+        }
+        return list
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

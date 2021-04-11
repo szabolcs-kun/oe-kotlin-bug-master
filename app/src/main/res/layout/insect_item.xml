@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp">
+
+    <com.skun.bugmaster.views.DangerLevelView
+        android:id="@+id/dangerLevelView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:gravity="start|center_vertical"
+        custom:dangerLevel="1" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            android:layout_toEndOf="@+id/dangerLevelView"
+            android:layout_marginLeft="5dp">
+        <TextView
+            android:id="@+id/name"
+            style="@style/TextAppearance.AppCompat.Large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:text="Army Ants"/>
+
+        <TextView
+            android:id="@+id/scientific_name"
+            style="@style/TextAppearance.AppCompat.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/dangerLevelView"
+            android:layout_below="@+id/name"
+            android:textSize="14sp"
+            tools:text="Dorylus gribodoi"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

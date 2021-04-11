@@ -34,6 +34,11 @@ class DangerLevelView(context: Context, attrs: AttributeSet) : View(context, att
         typedArray.recycle()
     }
 
+    public fun setDangerLevel(dangerLvl: Int)
+    {
+        dangerLevel = dangerLvl
+    }
+
     override fun onDraw(canvas: Canvas) {
         // call the super method to keep any drawing from the parent side.
         super.onDraw(canvas)
