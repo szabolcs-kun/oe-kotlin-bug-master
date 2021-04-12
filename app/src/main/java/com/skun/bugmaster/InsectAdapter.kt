@@ -38,7 +38,6 @@ class InsectAdapter(
                 currentItem.id.toString()
             )
             ContextCompat.startActivity(view.context, intent, null)
-            Toast.makeText(view.context, "Item ${currentItem.insectName} clicked", Toast.LENGTH_SHORT).show()
         }
     }
 
