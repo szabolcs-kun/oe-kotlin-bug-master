@@ -10,4 +10,10 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="title_activity_insects">InsectsActivity</string>
+
+
+
+    <string name="classification">Classification: %1$s</string>
+    <string name="danger_level_title">Danger Level</string>
+    <string name="danger_level_description">On a scale of 1-10, how dangerous is this insect?</string>
 </resources>

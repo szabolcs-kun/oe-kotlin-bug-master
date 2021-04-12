@@ -32,12 +32,12 @@ class InsectAdapter(
         holder.textView2.text = currentItem.insectScientificName
 
         holder.itemView.setOnClickListener { view ->
-            /*val intent = Intent(view.context, DetailsActivity::class.java)
+            val intent = Intent(view.context, InsectDetailsActivity::class.java)
             intent.putExtra(
                 Intent.EXTRA_TEXT,
                 currentItem.id.toString()
             )
-            ContextCompat.startActivity(view.context, intent, null)*/
+            ContextCompat.startActivity(view.context, intent, null)
             Toast.makeText(view.context, "Item ${currentItem.insectName} clicked", Toast.LENGTH_SHORT).show()
         }
     }
