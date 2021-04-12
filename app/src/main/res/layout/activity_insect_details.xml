@@ -43,8 +43,7 @@
                     android:id="@+id/image_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:src="@drawable/ic_bug_gray"/>
+                    android:layout_centerInParent="true" />
 
             </RelativeLayout>
 
@@ -66,7 +65,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_gravity="bottom"
-            android:text="Yellow Jacket"/>
+            tools:text="Yellow Jacket"/>
 
 
         <TextView
@@ -78,7 +77,7 @@
             android:layout_marginLeft="16dp"
             android:layout_gravity="bottom"
             android:layout_below="@+id/name"
-            android:text="Vespula squamosa"/>
+            tools:text="Vespula squamosa"/>
 
         </LinearLayout>
         </RelativeLayout>

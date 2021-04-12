@@ -16,5 +16,11 @@ data class Insect(
     var insectName: String = "",
 
     @ColumnInfo(name = "insect_scientific_name")
-    var insectScientificName : String = ""
+    var insectScientificName : String = "",
+
+    @ColumnInfo(name = "classification")
+    var classification : String = "",
+
+    @ColumnInfo(name = "image_asset")
+    var imageAsset : String = ""
 )

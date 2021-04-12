@@ -108,8 +108,8 @@ abstract class InsectDatabase : RoomDatabase() {
                         insect.insectName = insectJsonObject.getString("friendlyName")
                         insect.insectScientificName = insectJsonObject.getString("scientificName")
                         insect.dangerLevel = insectJsonObject.getString("dangerLevel").toInt()
-                        //insectJsonObject.getString("classification"),
-                        //insectJsonObject.getString("imageAsset"),
+                        insect.classification = insectJsonObject.getString("classification")
+                        insect.imageAsset =  insectJsonObject.getString("imageAsset")
 
                         if (dao.get(insect.insectName) === null)
                             dao.insert(insect)
