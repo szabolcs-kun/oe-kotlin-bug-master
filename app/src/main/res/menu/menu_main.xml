@@ -3,8 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.skun.bugmaster.MainActivity">
 
-    <item android:id="@+id/action_sort"
-        android:title="@string/action_sort"
+    <item android:id="@+id/action_sort_danger"
+        android:title="@string/action_sort_danger"
         android:icon="@drawable/ic_sort"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="never"
+        />
+    <item android:id="@+id/action_sort_insect"
+        android:title="@string/action_sort_insect"
+        android:icon="@drawable/ic_sort"
+        app:showAsAction="never"
+        />
 </menu>

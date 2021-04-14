@@ -77,14 +77,6 @@ abstract class InsectDatabase : RoomDatabase() {
             }
         }
 
-        /**
-         * Streams the JSON data from insect.json, parses it, and inserts it into the
-         * provided [SQLiteDatabase].
-         *
-         * @param db Database where objects should be inserted.
-         * @throws IOException   Failed to read from file.
-         * @throws JSONException Failed parsing JSON.
-         */
         @Throws(IOException::class, JSONException::class)
         private fun readInsectsFromResources(db: SupportSQLiteDatabase, context: Context) {
             //Read file to a string
@@ -114,6 +106,8 @@ abstract class InsectDatabase : RoomDatabase() {
                         if (dao.get(insect.insectName) === null)
                             dao.insert(insect)
                     }
+
+
                 })
         }
     }

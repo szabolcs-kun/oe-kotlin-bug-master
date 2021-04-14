@@ -13,9 +13,7 @@ class InsectViewModel (
         loadInsectsFromDatabase()
     }
 
-    /**
-     * Load data from SQLite database and show on the screen
-     */
+
     private fun loadInsectsFromDatabase() {
         _insects = dataSource.get()
     }

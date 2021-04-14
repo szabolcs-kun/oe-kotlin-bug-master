@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.skun.bugmaster.views.DangerLevelView
 
 class InsectAdapter(
-    private val insectList: List<Insect>
+    public var insectList: List<Insect>
 ) :
     RecyclerView.Adapter<InsectAdapter.InsectViewHolder>() {
 
@@ -42,6 +42,8 @@ class InsectAdapter(
     }
 
     override fun getItemCount() = insectList.size
+
+
 
     class InsectViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     {

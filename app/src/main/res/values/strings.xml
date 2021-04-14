@@ -9,7 +9,8 @@
 
     <string name="title_activity_insects">InsectsActivity</string>
 
-    <string name="action_sort">Sort</string>
+    <string name="action_sort_danger">Order by danger level</string>
+    <string name="action_sort_insect">Order by insect name</string>
 
     <string name="classification">Classification:</string>
     <string name="danger_level_title">Danger Level</string>
