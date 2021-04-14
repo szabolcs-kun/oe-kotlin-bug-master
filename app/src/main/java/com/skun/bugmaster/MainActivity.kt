@@ -1,5 +1,6 @@
 package com.skun.bugmaster
 
+import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.AsyncTask
 import android.os.Bundle
@@ -10,9 +11,11 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -27,12 +30,12 @@ class MainActivity : AppCompatActivity() {
 
         LoadInsectsTask().execute()
 
-        /*
+
         findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
+            val intent = Intent(view.context, QuizActivity::class.java)
+            ContextCompat.startActivity(view.context, intent, null)
         }
-        */
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -46,7 +49,7 @@ class MainActivity : AppCompatActivity() {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
-            R.id.action_settings -> true
+            R.id.action_sort -> true
             else -> super.onOptionsItemSelected(item)
         }
     }

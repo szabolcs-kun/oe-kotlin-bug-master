@@ -16,7 +16,9 @@ interface InsectDao {
 
     @Query("SELECT * from insect ORDER BY `danger_level` DESC")
     fun get(): List<Insect>
-    //fun get(): LiveData<List<Insect>>
+
+    @Query("SELECT * FROM insect ORDER BY RANDOM() LIMIT :num")
+    fun getRandomEntries(num: Int) : List<Insect>?
 
     @Query("SELECT * from insect WHERE id = :id ORDER BY `danger_level` DESC")
     fun get(id: Int): Insect?
