@@ -182,7 +182,15 @@ class MainActivity : AppCompatActivity() {
 
         override fun doInBackground(vararg id: Int?): List<Insect>? {
             val dataSource = InsectDatabase.getInstance(application).insectDao
-            return dataSource.get()
+
+            var data = dataSource.get()
+
+            while (data.isEmpty()) {
+                Thread.sleep(100L)
+                data = dataSource.get()
+            }
+
+            return data
         }
 
         //@Override
